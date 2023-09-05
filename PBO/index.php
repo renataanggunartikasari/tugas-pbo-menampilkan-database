@@ -20,14 +20,13 @@ $db = new dbController();
     <link rel="icon" href="https://smknegeri40-jkt.sch.id/wp-content/uploads/2023/07/Logo_SMK_Negeri_40_Jakarta.png" sizes="192x192" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Tugas PBO</title>
-  
 </head>
 
 <body>
     <!-- Navbar -->
     <div class="fixed-top bg-light" style="height: 64px;" data-aos="fade-down" data-aos-duration="1000">
         <nav class="navbar container navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid " >
+            <div class="container-fluid ">
                 <a class="navbar-brand text-dark" href="#">SMKN 40 JAKARTA</a>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -61,16 +60,6 @@ $db = new dbController();
     </div>
     <!-- Akhir Navbar -->
 
-    <!-- Banner -->
-    <div class="banner-container d-flex justify-content-center">
-        <figure>
-            <figcaption>
-                <h3 class="text-white" id="element">
-                </h3>
-            </figcaption>
-        </figure>
-    </div>
-
     <!-- Cards -->
     <div class="container" id="kelas">
         <button title="Back To Top" class="btnScrollToTop bg-success">
@@ -78,7 +67,7 @@ $db = new dbController();
                 <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
             </svg>
         </button>
-        <h1 class="text-center text-center mb-5 mt-3">Kelas</h1>
+        <h1 class="text-center text-center mb-5 mt-70">Kelas</h1>
         <div class="row text-center justify-content-center">
 
             <?php
@@ -136,6 +125,7 @@ $db = new dbController();
             endforeach
             ?>
         </div>
+    </div>
 
         <div class="container" id="guru">
             <h1 class="text-center text-center mb-5 mt-3">Guru</h1>
@@ -164,81 +154,73 @@ $db = new dbController();
                 endforeach
                 ?>
             </div>
-
-            <div class="container" id="siswa">
-                <h1 class="text-center text-center mb-5 mt-3">Siswa</h1>
-                <div class="row text-center justify-content-center">
-
-                    <?php
-                    // Menggunakan PDO untuk menghubungkan ke database
-                    $db = new PDO("mysql:host=localhost;dbname=sekolah", "root", "");
-
-                    // Kueri SQL dengan JOIN untuk mengambil data siswa, nama kelas, dan nama jurusan
-                    $sql = "SELECT t_siswa.f_nama, t_kelas.f_nama AS f_idkelas, t_jurusan.f_nama AS f_idjurusan
-                        FROM t_siswa
-                        INNER JOIN t_kelas ON t_siswa.f_idkelas = t_kelas.f_idkelas
-                        INNER JOIN t_jurusan ON t_siswa.f_idjurusan = t_jurusan.f_idjurusan";
-
-                    $result = $db->query($sql);
-
-                    foreach ($result as $row) :
-                    ?>
-
-                        <div class="card-all col-md-4 col-xl-6 mb-5" data-aos="fade-up" data-aos-duration="1000">
-                            <div class="card" style="width: 18rem;">
-                                <img src="img/<?php echo $row['f_nama']; ?>.jpg" class="card-img-top" alt="Siswa">
-                                <div class="card-body">
-                                    <h5 class="card-title text-dark">
-                                        <?php echo $row['f_nama']; ?>
-                                    </h5>
-                                    <span>Kelas: <?php echo $row['f_idkelas']; ?></span>
-                                    <p>Jurusan: <?php echo $row['f_idjurusan']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-
-                    <?php
-                    endforeach;
-                    ?>
-                </div>
-            </div>
         </div>
-    </div>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#D9D9D9" fill-opacity="1" d="M0,160L26.7,181.3C53.3,203,107,245,160,261.3C213.3,277,267,267,320,266.7C373.3,267,427,277,480,245.3C533.3,213,587,139,640,128C693.3,117,747,171,800,197.3C853.3,224,907,224,960,213.3C1013.3,203,1067,181,1120,170.7C1173.3,160,1227,160,1280,138.7C1333.3,117,1387,75,1413,53.3L1440,32L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z">
-        </path>
-    </svg>
-    <footer class="text-dark text-center mt-25" style="background: #D9D9D9;">
-        <p>
-            <a href="https://www.instagram.com/abhisn_gaming/" target="_blank" class="text-dark text-decoration-none fw-bold">
-            <i class="bi bi-suit-heart-fill"></i>
+
+           <!--siswa-->
+
+<div class="container" id="siswa">
+  <div class="text-center text-center mb-5 mt-3"><h1>Siswa</h1>
+  <div class="row justify-content-center">
+  <div class="col-8">
+  <div class="table table-primary table table-success table-striped">
+
+<table class="table">
+  <head>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Kelas</th>
+      <th scope="col">Jurusan</th>
+    </tr>
+  </head>
+     </body>
+
+  <?php
+  $i=1;
+  $sql = "SELECT f_nama, f_idkelas, f_idjurusan FROM t_siswa";
+  $row = $db->getALL($sql);
+  foreach ($row as $siswa) :
+  ?>
+
+    <tr>
+      <th scope="row">
+      <?php echo $i++; ?>
+      </th>
+      <td>
+
+        <?php echo $siswa['f_nama']; ?>
+
+      </td>
+      <td><?php echo $siswa['f_idkelas']; ?></td>
+      <td><?php echo $siswa['f_idjurusan']; ?></td>
+    </tr>
+
+    <?php endforeach ?>
+  </body>
+</table>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+
+    <!--siswa end-->
+    
+    <footer class="text-dark text-center mt-25">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0dcaf0" fill-opacity="1" d="M0,64L40,64C80,64,160,64,240,85.3C320,107,400,149,480,144C560,139,640,85,720,64C800,43,880,53,960,74.7C1040,96,1120,128,1200,138.7C1280,149,1360,139,1400,133.3L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+
+        <p class="bg-info">
+            <a href="https://www.instagram.com/nata_decoco24/" target="_blank" class="text-dark rawr text-decoration-none fw-bold ">
+                <i class="bi bi-suit-heart-fill"></i>
             </a>
             Created by Renata &copy;CopyRight
         </p>
     </footer>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        var typed = new Typed('#element', {
-            strings: [''],
-            typeSpeed: 50,
-            showCursor: false, // Sembunyikan kursor
-            loop: true // Ulangi animasi
-        });
-        const btnScrollToTop = document.querySelector(".btnScrollToTop");
-
-        btnScrollToTop.addEventListener("click", function() {
-            window.scrollTo(0, 0);
-        });
-        window.addEventListener("scroll", () => {
-            if (window.pageYOffset > 100) {
-                btnScrollToTop.classList.add("active");
-            } else {
-                btnScrollToTop.classList.remove("active");
-            }
-        })
-        AOS.init();
-    </script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+            </script>
     <!-- Akhir Cards -->
 </body>
 
